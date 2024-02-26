@@ -24,7 +24,7 @@ function Profile() {
         }
     },[file]);
  
-const handleFileUpload = (file) =>{
+const handleFileUpload = (file) => {
         const storage = getStorage(app);
         const fileName = new Date().getTime() + file.name;  //This will create a unique file name
         const storageRef = ref(storage, fileName) //This shows the which place save the image
@@ -42,14 +42,11 @@ const handleFileUpload = (file) =>{
         () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL)=>
             
-                // setFormData({ ...formData, avatar: downloadURL });
+                setFormData({ ...formData, avatar: downloadURL })
 
-                //we get the previous form data and set the avatar downloadURL
-                setFormData(prevData => ({ ...prevData, avatar: downloadURL }))
-
-                );
-            }
-        );
+            );
+       }
+      );
     };
 
 
@@ -70,8 +67,20 @@ const handleFileUpload = (file) =>{
                         src = {currentUser.avatar} 
                         alt = "profile" 
                         className="rounded-full h-24 w-24 object-cover cursor-pointers self-center mt-2 cursor-pointer"
-                    />
-                 
+                    /> 
+                     <p className='text-sm self-center'>
+                        {fileUploadError ? (
+                            <span className='text-red-700'>
+                            Error Image upload (image must be less than 2 mb)
+                            </span>
+                        ) : filePerc > 0 && filePerc < 100 ? (
+                            <span className='text-slate-700'>{`Uploading ${filePerc}%`}</span>
+                        ) : filePerc === 100 ? (
+                            <span className='text-green-700'>Image successfully uploaded!</span>
+                        ) : (
+                            ''
+                        )}
+                    </p>
                         <input type="text" placeholder="username" id="username" className="border p-3 rounded-lg"/>
                         <input type="email" placeholder="email" id="email" className="border p-3 rounded-lg"/>
                         <input type="password" placeholder="password" id="password" className="border p-3 rounded-lg"/>
