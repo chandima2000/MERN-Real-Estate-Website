@@ -23,7 +23,7 @@ function SignIn() {
   try{
 
        dispatch(signInStart());
-       const res =  await fetch('/user/auth/signin',
+       const res =  await fetch('/api/auth/signin',
        {
         method : 'POST',
         headers : {

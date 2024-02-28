@@ -14,7 +14,7 @@ function Profile() {
     const[fileUploadError, setFileUploadError] = useState(false);
     const[formData,setFormData] = useState({});
     console.log(filePerc);
-    //console.log(file);
+    console.log(file);
     console.log(formData);
     console.log(fileUploadError);
   
@@ -25,6 +25,7 @@ function Profile() {
     },[file]);
  
 const handleFileUpload = (file) => {
+    
         const storage = getStorage(app);
         const fileName = new Date().getTime() + file.name;  //This will create a unique file name
         const storageRef = ref(storage, fileName) //This shows the which place save the image
@@ -32,20 +33,19 @@ const handleFileUpload = (file) => {
 
         uploadTask.on('state_changed',
             (snapshot) => {
-                const progress = (snapshot.bytesTransferred/ snapshot.totalBytes) *100;
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) *100;
                 setFilePerc(Math.round(progress));
             },    
         (error)=> {
             setFileUploadError(true);
         },
-
         () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL)=>
             
                 setFormData({ ...formData, avatar: downloadURL })
 
-            );
-       }
+          );
+        }
       );
     };
 
@@ -71,7 +71,7 @@ const handleFileUpload = (file) => {
                      <p className='text-sm self-center'>
                         {fileUploadError ? (
                             <span className='text-red-700'>
-                            Error Image upload (image must be less than 2 mb)
+                            Error Image upload (image must be less than 3 mb)
                             </span>
                         ) : filePerc > 0 && filePerc < 100 ? (
                             <span className='text-slate-700'>{`Uploading ${filePerc}%`}</span>

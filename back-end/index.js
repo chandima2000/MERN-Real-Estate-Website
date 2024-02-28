@@ -3,14 +3,14 @@ import mongoose from 'mongoose';
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
 import dotenv from 'dotenv';
-//const mongoose = require('mongoose');
+import cookieParser from 'cookie-parser';
 
 dotenv.config(); 
 
 
 const app =express()
 app.use(express.json());
-
+app.use(cookieParser());
 
 mongoose.connect(process.env.MONGO)
     .then(()=>{
@@ -20,11 +20,11 @@ mongoose.connect(process.env.MONGO)
         console.log("Error", err);
     }) 
 
-//Every route should be define inside the index.js
+//Every route should be define(Establish) inside the index.js
 
-app.use('/user/routes',userRouter);  //user router is defined  (from user.route.js)
+app.use('/api/user',userRouter);  //user router is defined  (from user.route.js)
 
-app.use('/user/auth',authRouter);   // auth router is defined
+app.use('/api/auth',authRouter);   // auth router is defined
 
 
 //creating the middleware
