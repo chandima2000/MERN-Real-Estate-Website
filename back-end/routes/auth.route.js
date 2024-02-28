@@ -1,7 +1,4 @@
 import express from 'express';
-import User from '../models/user.model.js'
-import bcryptjs from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 import { google, signin, signup, signout } from '../controllers/auth.controller.js';
 
 
