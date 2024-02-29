@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux';
 import {useRef,useState,useEffect} from 'react';
 import {getDownloadURL, getStorage,ref,uploadBytesResumable} from 'firebase/storage';
 import {app} from '../firebase';
+
 import {
     updateUserStart,
     updateUserSuccess,
@@ -15,6 +16,8 @@ import {
     signOutUserStart,
 
 } from '../app/user/userSlice';
+import { useDispatch } from 'react-redux';
+
 
 
 function Profile() {
@@ -195,6 +198,7 @@ const handleSignOut = async () => {
                              >
                             {loading ? 'Loading...' : 'Update'}
                         </button>
+                    
 
                 </form>
                 <div className="flex justify-between mt-5">

@@ -16,7 +16,7 @@ import jwt from 'jsonwebtoken';
               //res.status(500).json(error.message);
               //since we create the middleware, we use the it instead of this statement
               //Import the middleware from index.js
-              next(errorHandler(error.message));
+              next(error);
           }
 };
 
@@ -33,6 +33,7 @@ export const signin = async (req,res,next) =>{
             return next(errorHandler(401,'Wrong Credentials'));
           }
           const token = jwt.sign({id:validUser._id},process.env.JWT_SECRET)  //Create the JWT token
+          const { password: pass, ...rest } = validUser._doc;
           res.cookie('access_token',token,{httpOnly :true}).status(200).json(validUser)  //After creating the JWT token, we need to save that token as the cookie
     }
     catch(error){
