@@ -18,6 +18,8 @@ export default function Search() {
   const [listings, setListings] = useState([]);
   console.log(listings);
 
+
+  // Effect hook for fetching listings based on URL parameters
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get('searchTerm');
@@ -48,6 +50,7 @@ export default function Search() {
       });
     }
 
+   // Define the `fetchListings` function to make the API call
     const fetchListings = async () => {
       setLoading(true);
       const searchQuery = urlParams.toString();
@@ -56,7 +59,8 @@ export default function Search() {
       setListings(data);
       setLoading(false);
     };
-
+    
+    // Call the `fetchListings` function
     fetchListings();
   }, [location.search]);
 
