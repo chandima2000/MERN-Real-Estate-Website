@@ -14,7 +14,7 @@ This is a full-stack website built using the MERN (MongoDB, Express.js, React.js
 1. Clone the project:
 
    ```bash
-   git clone https://github.com/chandima2000/Real-Estate-Market-Web.git
+   git clone https://github.com/chandima2000/Real-Estate-MarketPlace.git
 
 2. Install dependencies for the client-side:
 
