@@ -19,7 +19,7 @@ This is a full-stack website built using the MERN (MongoDB, Express.js, React.js
 2. Install dependencies for the client-side:
 
    ```bash
-   cd client
+   cd front-end
     npm install
 
 3. Install dependencies for the server-side:
@@ -28,6 +28,17 @@ This is a full-stack website built using the MERN (MongoDB, Express.js, React.js
    cd ..
     npm install
 
+## Front-End Configuration
+
+ - Go to the front end
+ - create a new .env file
+ - Add " VITE_FIREBASE_API_KEY = "
+
+## Back-End Configuration
+
+- Go to the root folder
+- create a new .env file
+- Add " MONGO = " , " JWT_SECRET = " 
 
 ## Usage
 
