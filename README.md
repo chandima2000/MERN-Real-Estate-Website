@@ -8,6 +8,7 @@ This is a full-stack website built using the MERN (MongoDB, Express.js, React.js
 - Styling with Tailwind CSS: The website is styled using Tailwind CSS, providing a clean and modern user interface.
 - CRUD Operations: Implements CRUD (Create, Read, Update, Delete) operations for managing property listings, enabling users to add, view, edit, and delete property listings.
 - Firebase Storage: Utilizes Firebase Storage to store profile images, ensuring efficient and reliable image storage for user profiles.
+- Website uses the React Redux Toolkit for the better states management.
   
 ## Installation
 
