@@ -11,19 +11,19 @@ function SignIn() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const handleChange =(e) =>{
+    const handleChange = (e) =>{
             setFormData({
                 ...formData,
                 [e.target.id]:e.target.value,
             });
     };
-    const handleSubmit = async (e)=>{
+    const handleSubmit = async (e) => {
        e.preventDefault(); 
 
   try{
 
        dispatch(signInStart());
-       const res =  await fetch('/api/auth/signin',
+       const res = await fetch('/api/auth/signin',
        {
         method : 'POST',
         headers : {
@@ -60,8 +60,8 @@ function SignIn() {
                 <OAuth/>
             </form>
             <div className="flex flex-row gap-2 mt-3">
-                <p>Dont Have an account?</p>
-                <Link to = {"/sign-Up"}><span className="text-blue-700 font-bold">Sign Up</span></Link>
+                <p>Don't Have an account?</p>
+                <Link to = {"/sign-up"}><span className="text-blue-700 font-bold">Sign Up</span></Link>
             </div>
             {error && <p className="text-red-500 mt-5">{error}</p>}
         </div>

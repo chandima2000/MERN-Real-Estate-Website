@@ -35,7 +35,24 @@ export default function UpdateListing() {
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    useEffect ()
+
+
+    useEffect(() => {
+      const fetchListing = async () => {
+        const listingId = params.listingId;
+        const res = await fetch(`/api/listing/get/${listingId}`);
+        const data = await res.json();
+        if (data.success === false) {
+          console.log(data.message);
+          return;
+        }
+        setFormData(data);
+      };
+  
+      fetchListing();
+    }, []);
+
+
 
 const handleImageSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
@@ -64,7 +81,7 @@ const handleImageSubmit = (e) => {
             setImageUploadError('You can only upload 6 images per listing');
             setUploading(false);
         }
-}
+};
 
 
 const storeImage = async (file) => {
@@ -166,24 +183,6 @@ const handleSubmit = async (e) => {
       setLoading(false);
     }
   };
-
-
-  useEffect(() => {
-    const fetchListing = async () => {
-      const listingId = params.listingId;
-      const res = await fetch(`/api/listing/get/${listingId}`);
-      const data = await res.json();
-      if (data.success === false) {
-        console.log(data.message);
-        return;
-      }
-      setFormData(data);
-    };
-
-    fetchListing();
-  }, []);
-
-
 
   return (
     <main className='p-3 max-w-4xl mx-auto'>
